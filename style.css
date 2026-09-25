@@ -242,6 +242,10 @@ input {
   font-weight: 800;
 }
 
+.helperButton {
+  margin-top: 14px;
+}
+
 .wordReveal {
   padding: 20px;
   text-align: center;

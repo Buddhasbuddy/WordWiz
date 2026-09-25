@@ -20,6 +20,7 @@ const startButton = document.getElementById("startButton");
 
 const hearButton = document.getElementById("hearButton");
 const helpButton = document.getElementById("helpButton");
+const readHelperButton = document.getElementById("readHelperButton");
 const showButton = document.getElementById("showButton");
 const checkButton = document.getElementById("checkButton");
 const finishButton = document.getElementById("finishButton");
@@ -258,15 +259,18 @@ SPEECH
 */
 
 function speakWord(word) {
+  speakText(word, "Speech is not available in this browser, but you can still practise by reading the word from your list.");
+}
+
+function speakText(text, unavailableMessage) {
   if (!("speechSynthesis" in window)) {
-    feedback.textContent =
-      "Speech is not available in this browser, but you can still practise by reading the word from your list.";
+    feedback.textContent = unavailableMessage;
     return;
   }
 
   window.speechSynthesis.cancel();
 
-  const speech = new SpeechSynthesisUtterance(word);
+  const speech = new SpeechSynthesisUtterance(text);
 
   speech.lang = "en-CA";
   speech.rate = 0.78;
@@ -295,13 +299,24 @@ function showNextHelper() {
 
     helperTitle.textContent = helper.title;
     helperText.textContent = helper.text;
+    readHelperButton.disabled = false;
 
     helperIndex++;
   } else {
     helperTitle.textContent = "You have used all the clues";
     helperText.textContent =
       "You can choose “Show Me the Word” whenever you're ready.";
+    readHelperButton.disabled = false;
   }
+}
+
+function speakCurrentHelper() {
+  const helperSpeech = `${helperTitle.textContent}. ${helperText.textContent}`;
+
+  speakText(
+    helperSpeech,
+    "Speech is not available in this browser, but you can still read the helper on the screen."
+  );
 }
 
 
@@ -455,6 +470,7 @@ hearButton.addEventListener("click", () => {
 });
 
 helpButton.addEventListener("click", showNextHelper);
+readHelperButton.addEventListener("click", speakCurrentHelper);
 
 showButton.addEventListener("click", () => {
   if (showButton.dataset.visible === "true") {
