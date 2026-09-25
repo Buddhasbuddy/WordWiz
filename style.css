@@ -229,21 +229,120 @@ input {
   margin: 0;
 }
 
-.helperBox {
-  padding: 18px;
-  background: var(--helper);
-  border-left: 5px solid var(--primary);
-  border-radius: 10px;
-  line-height: 1.55;
+.puzzleArea {
+  padding: 20px;
+  background: #f8fafc;
+  border: 2px solid var(--border);
+  border-radius: 16px;
 }
 
-.helperTitle {
-  margin-bottom: 6px;
+.puzzleLabel,
+.pieceBankLabel {
+  text-align: center;
   font-weight: 800;
 }
 
-.helperButton {
-  margin-top: 14px;
+.pieceBankLabel {
+  margin-top: 24px;
+  color: var(--muted);
+}
+
+.syllableSlots,
+.pieceBank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.syllableSlots {
+  min-height: 76px;
+  margin-top: 12px;
+}
+
+.syllableSlot,
+.syllablePiece {
+  min-width: 76px;
+  min-height: 58px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.syllableSlot {
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--border);
+  background: var(--card);
+  color: var(--muted);
+}
+
+.syllableSlot.filled {
+  border-style: solid;
+  border-color: #6da579;
+  background: var(--success);
+  color: var(--text);
+}
+
+.pieceBank {
+  margin-top: 12px;
+}
+
+.syllablePiece {
+  position: relative;
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+  color: var(--text);
+  box-shadow: 0 3px 0 #b5c8dc;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.syllablePiece::before,
+.syllablePiece::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 8px);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.syllablePiece::before {
+  top: -9px;
+}
+
+.syllablePiece::after {
+  bottom: -9px;
+}
+
+.syllablePiece:hover:not(:disabled),
+.syllablePiece:focus-visible:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #b5c8dc;
+}
+
+.syllablePiece:disabled {
+  cursor: default;
+}
+
+.syllablePiece.pieceUsed {
+  opacity: 0.35;
+  box-shadow: none;
+}
+
+.syllablePiece.pieceWrong {
+  animation: piece-shake 0.25s ease;
+  border-color: #b64b4b;
+  background: #fdecec;
+}
+
+@keyframes piece-shake {
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
 }
 
 .wordReveal {

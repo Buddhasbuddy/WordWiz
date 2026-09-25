@@ -15,8 +15,8 @@
       <div>
         <h1>Ethan's Word Quest</h1>
         <p class="intro">
-          Enter one spelling word per line. The game will build helpful spelling
-          strategies and bring difficult words back later for extra practice.
+          Enter one spelling word per line. The game will split each word into
+          syllable puzzle pieces for hands-on spelling practice.
         </p>
       </div>
 
@@ -61,14 +61,14 @@ discipline</textarea>
           <div>
             <h2>Word Groups</h2>
             <p class="smallText">
-              These groups are based on useful spelling patterns, not on difficulty.
+              These groups help organize the words before the puzzle begins.
             </p>
           </div>
         </div>
 
         <div id="clusterList" class="clusterList"></div>
 
-        <button id="startButton" class="primary">Start Practice</button>
+        <button id="startButton" class="primary">Start Puzzle Game</button>
       </section>
     </section>
 
@@ -89,44 +89,21 @@ discipline</textarea>
       </div>
 
       <section class="gameCard" aria-live="polite">
-        <p class="instruction">Listen to the word, then give it a try.</p>
+        <p class="instruction">
+          Listen to the word, then choose the syllable piece that comes next.
+        </p>
 
         <button id="hearButton" class="secondary largeButton">
           🔊 Hear Word
         </button>
 
-        <div id="helperBox" class="helperBox hidden">
-          <div id="helperTitle" class="helperTitle"></div>
-          <div id="helperText"></div>
-          <button id="readHelperButton" class="secondary helperButton" type="button">
-            🔊 Read Helper
-          </button>
+        <div class="puzzleArea">
+          <div class="puzzleLabel">Build the word</div>
+          <div id="syllableSlots" class="syllableSlots" aria-live="polite"></div>
+
+          <div class="pieceBankLabel">Choose a piece</div>
+          <div id="pieceBank" class="pieceBank"></div>
         </div>
-
-        <button id="helpButton" class="secondary largeButton">
-          💡 Help Me
-        </button>
-
-        <div id="wordReveal" class="wordReveal hidden"></div>
-
-        <button id="showButton" class="secondary">
-          👀 Show Me the Word
-        </button>
-
-        <label for="answerInput" class="answerLabel">Type the word</label>
-
-        <input
-          id="answerInput"
-          type="text"
-          autocomplete="off"
-          autocapitalize="none"
-          spellcheck="false"
-          inputmode="text"
-        >
-
-        <button id="checkButton" class="primary largeButton">
-          Check
-        </button>
 
         <div id="feedback" class="feedback" aria-live="polite"></div>
       </section>
