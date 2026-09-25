@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethan's Word Quest</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="app">
+
+    <!-- SETUP -->
+    <section id="setupScreen" class="screen">
+      <div>
+        <h1>Ethan's Word Quest</h1>
+        <p class="intro">
+          Enter one spelling word per line. The game will build helpful spelling
+          strategies and bring difficult words back later for extra practice.
+        </p>
+      </div>
+
+      <label for="wordInput" class="fieldLabel">Spelling words</label>
+
+      <textarea id="wordInput" rows="12" spellcheck="false">kindness
+libraries
+machine
+neighbour
+o'clock
+paper
+question
+railroad
+safe
+thirty
+discipline</textarea>
+
+      <div class="setupOptions">
+        <label>
+          <span class="fieldLabel">Practice mode</span>
+          <select id="practiceMode">
+            <option value="random" selected>Mixed words</option>
+            <option value="patterns">Group similar patterns</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="fieldLabel">Words per round</span>
+          <select id="roundSize">
+            <option value="3">3 words</option>
+            <option value="5" selected>5 words</option>
+            <option value="8">8 words</option>
+            <option value="999">All words</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="prepareButton" class="primary">Prepare Words</button>
+
+      <section id="previewArea" class="preview hidden">
+        <div class="previewHeader">
+          <div>
+            <h2>Word Groups</h2>
+            <p class="smallText">
+              These groups are based on useful spelling patterns, not on difficulty.
+            </p>
+          </div>
+        </div>
+
+        <div id="clusterList" class="clusterList"></div>
+
+        <button id="startButton" class="primary">Start Practice</button>
+      </section>
+    </section>
+
+
+    <!-- GAME -->
+    <section id="gameScreen" class="screen hidden">
+      <div class="topBar">
+        <div>
+          Word <strong id="currentNumber">1</strong>
+          of <strong id="totalWords">1</strong>
+        </div>
+
+        <button id="finishButton" class="secondary">Done for now</button>
+      </div>
+
+      <div class="progressTrack" aria-hidden="true">
+        <div id="progressBar" class="progressBar"></div>
+      </div>
+
+      <section class="gameCard" aria-live="polite">
+        <p class="instruction">Listen to the word, then give it a try.</p>
+
+        <button id="hearButton" class="secondary largeButton">
+          🔊 Hear Word
+        </button>
+
+        <div id="helperBox" class="helperBox hidden">
+          <div id="helperTitle" class="helperTitle"></div>
+          <div id="helperText"></div>
+        </div>
+
+        <button id="helpButton" class="secondary largeButton">
+          💡 Help Me
+        </button>
+
+        <div id="wordReveal" class="wordReveal hidden"></div>
+
+        <button id="showButton" class="secondary">
+          👀 Show Me the Word
+        </button>
+
+        <label for="answerInput" class="answerLabel">Type the word</label>
+
+        <input
+          id="answerInput"
+          type="text"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          inputmode="text"
+        >
+
+        <button id="checkButton" class="primary largeButton">
+          Check
+        </button>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+      </section>
+    </section>
+
+
+    <!-- FINISH -->
+    <section id="finishScreen" class="screen hidden">
+      <div class="finishCard">
+        <div class="finishStar" aria-hidden="true">⭐</div>
+        <h1>Practice Complete</h1>
+        <p id="finishMessage"></p>
+      </div>
+
+      <section id="reviewArea" class="reviewArea hidden">
+        <h2>Words to see again</h2>
+        <div id="reviewWords"></div>
+      </section>
+
+      <button id="againButton" class="primary">
+        Practice Another Round
+      </button>
+
+      <button id="changeWordsButton" class="secondary">
+        Change Words
+      </button>
+    </section>
+
+  </main>
+
+  <script src="spelling-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

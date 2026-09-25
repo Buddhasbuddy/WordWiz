@@ -1,0 +1,315 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #222222;
+  --muted: #5f6670;
+  --border: #c8cdd4;
+  --primary: #315b8a;
+  --primary-soft: #eaf1f8;
+  --helper: #eef4fb;
+  --reveal: #faf7e8;
+  --success: #e8f5eb;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+textarea,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #9cc2e8;
+  outline-offset: 2px;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+.intro,
+.smallText {
+  color: var(--muted);
+}
+
+.intro {
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.smallText {
+  font-size: 0.92rem;
+  margin: 4px 0 0;
+}
+
+.fieldLabel,
+.answerLabel {
+  font-weight: 700;
+}
+
+textarea,
+select,
+input {
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+textarea {
+  padding: 16px;
+  font-size: 18px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+select {
+  padding: 12px;
+}
+
+input {
+  padding: 15px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+  border: 2px solid var(--primary);
+  font-weight: 700;
+}
+
+.secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+
+.largeButton {
+  width: 100%;
+}
+
+.setupOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.preview {
+  border-top: 2px solid var(--border);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.previewHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.clusterList {
+  display: grid;
+  gap: 12px;
+}
+
+.clusterCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.clusterCard h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.clusterWords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wordChip {
+  background: var(--primary-soft);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #e3e6ea;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  transition: width 0.2s ease;
+}
+
+.gameCard {
+  padding: 24px;
+  background: var(--card);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.instruction {
+  text-align: center;
+  color: var(--muted);
+  font-size: 18px;
+  margin: 0;
+}
+
+.helperBox {
+  padding: 18px;
+  background: var(--helper);
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  line-height: 1.55;
+}
+
+.helperTitle {
+  margin-bottom: 6px;
+  font-weight: 800;
+}
+
+.wordReveal {
+  padding: 20px;
+  text-align: center;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: var(--reveal);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.feedback {
+  min-height: 32px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.finishCard {
+  padding: 28px;
+  background: var(--card);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.finishStar {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.reviewArea {
+  padding: 20px;
+  background: var(--card);
+  border-radius: 15px;
+}
+
+#reviewWords {
+  margin-top: 10px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 14px;
+  }
+
+  .setupOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .gameCard {
+    padding: 18px;
+  }
+
+  .topBar {
+    align-items: stretch;
+  }
+
+  .topBar button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
